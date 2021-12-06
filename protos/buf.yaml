@@ -1,0 +1,11 @@
+version: v1
+breaking:
+  use:
+    - WIRE_JSON
+lint:
+  use:
+    - DEFAULT
+  except:
+    - FIELD_LOWER_SNAKE_CASE
+    - ONEOF_LOWER_SNAKE_CASE
+    - PACKAGE_LOWER_SNAKE_CASE

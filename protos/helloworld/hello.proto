@@ -1,0 +1,85 @@
+syntax = "proto3";
+
+package helloworld;
+
+import "google/protobuf/empty.proto";
+
+service Greeter {
+  rpc SayHello (HelloRequest) returns (HelloReply);
+  rpc SayHelloWithGender (HelloRequestWithGender) returns (HelloReplyWithGender);
+  rpc SayHelloAgain (HelloRequest) returns (HelloReply);
+  rpc SayHelloReturnArray (HelloReturnArrayRequest) returns (HelloReturnArrayReply);
+  rpc SayHelloWithName (HelloRequestWithRequired) returns (HelloReply);
+  rpc SayIntArray (google.protobuf.Empty) returns (IntArrayReply);
+  rpc SayNested (google.protobuf.Empty) returns (NestedReplyA);
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloReturnArrayRequest {
+  string name = 1;
+  repeated HelloReturnArrayRequest_Int list = 2;
+}
+
+message HelloReturnArrayRequest_Int {
+  int32 num = 1;
+}
+
+message HelloReturnArrayReply_Int {
+  int32 num = 1;
+}
+
+message HelloRequestWithRequired {
+  string name = 1;
+}
+
+message HelloReply {
+  string message = 1;
+}
+
+message HelloReturnArrayReply {
+  string message = 1;
+  repeated HelloReturnArrayReply_Int list = 2;
+}
+
+message IntArrayReply {
+  repeated int32 nums = 1;
+}
+
+message NestedReplyA {
+  NestedReplyB x = 1;
+}
+
+message NestedReplyB {
+  string name = 1;
+  NestedReplyC c = 2;
+  NestedReplyD d = 3;
+}
+
+message NestedReplyC {
+  string cname = 1;
+  NestedReplyD d = 2;
+  repeated int32 anums = 3;
+  double snums = 4;
+}
+
+message NestedReplyD {
+  string dname = 1;
+}
+
+enum Gender {
+  MALE = 0;
+  FEMALE = 1;
+}
+
+message HelloRequestWithGender {
+  string name = 1;
+  Gender gender = 2;
+}
+
+message HelloReplyWithGender {
+  string message = 1;
+  Gender gender = 2;
+}
