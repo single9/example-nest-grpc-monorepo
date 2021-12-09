@@ -5,5 +5,9 @@
   "testRegex": ".e2e-spec.ts$",
   "transform": {
     "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "moduleNameMapper": {
+    "@app/grpc-helloworld/(.*)": "<rootDir>../../../libs/grpc-helloworld/src/$1",
+    "@app/grpc-helloworld": "<rootDir>../../../libs/grpc-helloworld/src"
   }
 }
