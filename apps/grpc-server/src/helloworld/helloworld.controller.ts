@@ -1,10 +1,14 @@
-import { Controller } from '@nestjs/common';
+import { Controller, UseGuards, UseInterceptors } from '@nestjs/common';
 import { GrpcMethod } from '@nestjs/microservices';
 import { helloworld } from '@app/grpc-helloworld';
+import { NameValidator } from './name-validator.guard';
+import { LoggingRpcInterceptor } from '@app/logger';
 
 @Controller()
+@UseInterceptors(LoggingRpcInterceptor)
 export class HelloworldController {
   @GrpcMethod('Greeter', 'SayHello')
+  @UseGuards(NameValidator)
   sayHello(data: helloworld.HelloRequest): helloworld.HelloReply {
     const name = data.name;
     const response = new helloworld.HelloReply();

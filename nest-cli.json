@@ -6,7 +6,9 @@
   "compilerOptions": {
     "webpack": true,
     "tsConfigPath": "apps/api/tsconfig.app.json",
-    "assets": ["**/*.proto"],
+    "assets": [
+      "**/*.proto"
+    ],
     "watchAssets": true
   },
   "projects": {
@@ -35,6 +37,15 @@
       "sourceRoot": "libs/grpc-helloworld/src",
       "compilerOptions": {
         "tsConfigPath": "libs/grpc-helloworld/tsconfig.lib.json"
+      }
+    },
+    "logger": {
+      "type": "library",
+      "root": "libs/logger",
+      "entryFile": "index",
+      "sourceRoot": "libs/logger/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/logger/tsconfig.lib.json"
       }
     }
   }

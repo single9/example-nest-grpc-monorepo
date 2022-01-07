@@ -23,6 +23,12 @@
       ],
       "@app/grpc-helloworld/*": [
         "libs/grpc-helloworld/src/*"
+      ],
+      "@app/logger": [
+        "libs/logger/src"
+      ],
+      "@app/logger/*": [
+        "libs/logger/src/*"
       ]
     }
   }

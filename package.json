@@ -30,7 +30,9 @@
     "@nestjs/platform-express": "^8.0.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^7.2.0"
+    "rxjs": "^7.2.0",
+    "winston": "^3.3.3",
+    "winston-daily-rotate-file": "^4.5.5"
   },
   "devDependencies": {
     "@nestjs/cli": "^8.0.0",
@@ -76,7 +78,8 @@
       "<rootDir>/libs/"
     ],
     "moduleNameMapper": {
-      "^@app/grpc-helloworld(|/.*)$": "<rootDir>/libs/grpc-helloworld/src/$1"
+      "^@app/grpc-helloworld(|/.*)$": "<rootDir>/libs/grpc-helloworld/src/$1",
+      "^@app/logger(|/.*)$": "<rootDir>/libs/logger/src/$1"
     }
   }
 }

@@ -1,8 +1,10 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, UseInterceptors } from '@nestjs/common';
 import { ApiService } from './api.service';
 import { GrpcHelloworldService } from '@app/grpc-helloworld';
+import { LoggingHttpInterceptor } from '@app/logger';
 
 @Controller()
+@UseInterceptors(LoggingHttpInterceptor)
 export class ApiController {
   constructor(
     private readonly apiService: ApiService,

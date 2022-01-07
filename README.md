@@ -1,6 +1,7 @@
 ## Description
 
-Framework: [Nest](https://github.com/nestjs/nest)
+- [Nest](https://github.com/nestjs/nest)
+- [gRPC](https://grpc.io/)
 
 ## Installation
 
@@ -22,6 +23,17 @@ $ yarn start:prod [app_name]
 ```
 
 > Default `app_name` is `api`
+
+```bash
+# Start app in terminal #1
+$ yarn start
+# Start gRPC server in terminal #2
+$ yarn start grpc-server
+```
+
+Open http://localhost:3000 in your browser.
+
+Try to type http://localhost:3000/MyName and http://localhost:3000/ne5.
 
 ## Test
 
