@@ -1,5 +1,7 @@
 ## Description
 
+An example of Nest.js
+
 - [Nest](https://github.com/nestjs/nest)
 - [gRPC](https://grpc.io/)
 
