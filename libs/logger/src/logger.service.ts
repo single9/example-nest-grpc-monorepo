@@ -2,20 +2,24 @@ import Pino from 'pino';
 import { Injectable, Scope, LoggerService } from '@nestjs/common';
 
 const { NODE_ENV } = process.env;
+const targets = [];
+
+if (NODE_ENV !== 'production') {
+  targets.push({
+    target: 'pino-pretty',
+    options: {
+      colorize: true,
+      destination: 1,
+      translateTime: true,
+      ignore: 'pid,hostname',
+    },
+    level: 'debug',
+  });
+}
+
 const pino = Pino({
   transport: {
-    targets: [
-      NODE_ENV !== 'production' && {
-        target: 'pino-pretty',
-        options: {
-          colorize: true,
-          destination: 1,
-          translateTime: true,
-          ignore: 'pid,hostname',
-        },
-        level: 'debug',
-      },
-    ],
+    targets,
   },
 });
 
