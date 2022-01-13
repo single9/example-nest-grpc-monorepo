@@ -7,19 +7,22 @@ import {
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { getHandlerInfo } from './utils';
-import logger from './logger';
+import { Logger } from './logger.service';
 
 @Injectable()
 export class LoggingRpcInterceptor implements NestInterceptor {
+  constructor(private logger: Logger) {}
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
     const data = JSON.stringify(context.switchToRpc().getData());
     const ctx = JSON.stringify(context.switchToRpc().getContext());
-
-    logger.info(`${getHandlerInfo(context)} - ${data} - ${ctx}`);
-
     const now = Date.now();
-    return next
-      .handle()
-      .pipe(tap(() => logger.info(`After... ${Date.now() - now}ms`)));
+    return next.handle().pipe(
+      tap(() => {
+        const str = `${getHandlerInfo(context)} - ${data} - ${ctx} ${
+          Date.now() - now
+        }ms`;
+        this.logger.info(str);
+      }),
+    );
   }
 }
